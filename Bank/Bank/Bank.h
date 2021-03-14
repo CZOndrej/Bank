@@ -17,7 +17,7 @@ public:
 	Client* GetClient(int n);
 	Account* GetAccount(int c);
 
-	Client* CreateClient();
+	Client* CreateClient(int c, string n);
 
 	Account* CreateAccount(int n, Client* o);
 	Account* CreateAccount(int n, Client* o, double ir);

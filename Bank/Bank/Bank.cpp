@@ -1,21 +1,92 @@
-// Bank.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
 #include "Bank.h"
+#include "Account.h"
+#include "Client.h"
 
-int main()
+using namespace std;
+
+Bank::Bank(int c, int a)
 {
-    std::cout << "Hello World!\n";
+    this->clients = new Client * [c];
+    this->accounts = new Account * [a];
+
+    this->accountsCount = 0;
+    this->clientsCount = 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+Bank::~Bank()
+{
+}
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+Client* Bank::GetClient(int n)
+{
+    for (int i = 0; i < this->clientsCount; i++)
+    {
+        if (clients[i]->GetCode() == n)
+        {
+            return clients[i];
+        }
+    }
+    return nullptr;
+}
+
+Account* Bank::GetAccount(int c)
+{
+    for (int i = 0; i < this->clientsCount; i++)
+    {
+        if (accounts[i]->GetNumber() == c)
+        {
+            return accounts[i];
+        }
+    }
+    return nullptr;
+}
+
+Client* Bank::CreateClient(int c, string n)
+{
+    Client* newClient = new Client(c, n);
+    clients[clientsCount] = newClient;
+    clientsCount++;
+    return newClient;
+}
+
+Account* Bank::CreateAccount(int n, Client* o)
+{
+    Account* newAccount = new Account(n, o);
+    accounts[accountsCount] = newAccount;
+    accountsCount++;
+    return newAccount;
+}
+
+Account* Bank::CreateAccount(int n, Client* o, double ir)
+{
+    Account* newAccount = new Account(n, o, ir);
+    accounts[accountsCount] = newAccount;
+    accountsCount++;
+    return newAccount;
+}
+
+Account* Bank::CreateAccount(int n, Client* o, Client* p)
+{
+    Account* newAccount = new Account(n, o, p);
+    accounts[accountsCount] = newAccount;
+    accountsCount++;
+    return newAccount;
+}
+
+Account* Bank::CreateAccount(int n, Client* o, Client* p, double ir)
+{
+    Account* newAccount = new Account(n, o, p, ir);
+    accounts[accountsCount] = newAccount;
+    accountsCount++;
+    return newAccount;
+}
+
+void Bank::AddInterest()
+{
+    for (int i = 0; i < accountsCount; i++)
+    {
+        accounts[i]->AddInterest();
+    }
+}

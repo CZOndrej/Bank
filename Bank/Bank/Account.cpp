@@ -6,6 +6,8 @@ Account::Account(int n, Client* o)
 	this->owner = o;
 	this->interestRate = 1.2;
 	this->balance = 0;
+	this->partner = nullptr;
+
 }
 
 Account::Account(int n, Client* o, double ir)
@@ -14,6 +16,7 @@ Account::Account(int n, Client* o, double ir)
 	this->owner = o;
 	this->interestRate = ir;
 	this->balance = 0;
+	this->partner = nullptr;
 
 }
 
