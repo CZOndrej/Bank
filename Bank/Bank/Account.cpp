@@ -1,5 +1,7 @@
 #include "Account.h"
 
+int Account::accountObjects = 0;
+
 Account::Account(int n, Client* o)
 {
 	this->number = n;
@@ -7,6 +9,7 @@ Account::Account(int n, Client* o)
 	this->interestRate = 1.2;
 	this->balance = 0;
 	this->partner = nullptr;
+	Account::accountObjects++;
 
 }
 
@@ -17,7 +20,7 @@ Account::Account(int n, Client* o, double ir)
 	this->interestRate = ir;
 	this->balance = 0;
 	this->partner = nullptr;
-
+	Account::accountObjects++;
 }
 
 Account::Account(int n, Client* o, Client* p)
@@ -27,6 +30,7 @@ Account::Account(int n, Client* o, Client* p)
 	this->partner = p;
 	this->interestRate = 1.2;
 	this->balance = 0;
+	Account::accountObjects++;
 }
 
 Account::Account(int n, Client* o, Client* p, double ir)
@@ -36,7 +40,7 @@ Account::Account(int n, Client* o, Client* p, double ir)
 	this->partner = p;
 	this->interestRate = ir;
 	this->balance = 0;
-
+	Account::accountObjects++;
 }
 
 int Account::GetNumber()
@@ -91,4 +95,9 @@ bool Account::Withdraw(double a)
 void Account::AddInterest()
 {
 	this->balance += balance * (this->interestRate / 100);
+}
+
+int Account::GetAccountsObjCount()
+{
+	return Account::accountObjects;
 }

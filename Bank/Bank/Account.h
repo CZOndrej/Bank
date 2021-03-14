@@ -11,6 +11,7 @@ private:
 	int number;
 	double balance;
 	double interestRate;
+	static int accountObjects;
 
 	Client* owner;
 	Client* partner;
@@ -31,5 +32,6 @@ public:
 	void Deposit(double a);
 	bool Withdraw(double a);
 	void AddInterest();
+	static int GetAccountsObjCount();
 };
 

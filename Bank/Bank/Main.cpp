@@ -27,6 +27,8 @@ int main()
 
 	cout << bank->GetAccount(115)->GetBalance()<<endl;
 
+	cout << Account::GetAccountsObjCount() << endl;
+
 	delete bank;
 	cin.get();
 
