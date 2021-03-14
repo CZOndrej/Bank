@@ -17,6 +17,16 @@ Bank::Bank(int c, int a)
 
 Bank::~Bank()
 {
+    for (int i = 0; i < clientsCount; i++)
+    {
+        delete clients[i];
+    }
+    for (int i = 0; i < accountsCount; i++)
+    {
+        delete accounts[i];
+    }
+    delete[] clients;
+    delete[] accounts;
 }
 
 Client* Bank::GetClient(int n)
