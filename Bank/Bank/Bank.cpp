@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Bank.h"
 #include "Account.h"
+#include "PartnerAccount.h"
 #include "Client.h"
 
 using namespace std;
@@ -63,7 +64,7 @@ Client* Bank::CreateClient(int c, string n)
 
 Account* Bank::CreateAccount(int n, Client* o)
 {
-    Account* newAccount = new Account(n, o);
+    Account* newAccount = new Account(n ,o);
     accounts[accountsCount] = newAccount;
     accountsCount++;
     return newAccount;
@@ -77,17 +78,17 @@ Account* Bank::CreateAccount(int n, Client* o, double ir)
     return newAccount;
 }
 
-Account* Bank::CreateAccount(int n, Client* o, Client* p)
+Account* Bank::CreatePartnerAccount(int n, Client* o, Client* p)
 {
-    Account* newAccount = new Account(n, o, p);
+    PartnerAccount* newAccount = new PartnerAccount(n, o, p);
     accounts[accountsCount] = newAccount;
     accountsCount++;
     return newAccount;
 }
 
-Account* Bank::CreateAccount(int n, Client* o, Client* p, double ir)
+Account* Bank::CreatePartnerAccount(int n, Client* o, Client* p, double ir)
 {
-    Account* newAccount = new Account(n, o, p, ir);
+    PartnerAccount* newAccount = new PartnerAccount(n, o, p, ir);
     accounts[accountsCount] = newAccount;
     accountsCount++;
     return newAccount;

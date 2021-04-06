@@ -21,8 +21,8 @@ public:
 
 	Account* CreateAccount(int n, Client* o);
 	Account* CreateAccount(int n, Client* o, double ir);
-	Account* CreateAccount(int n, Client* o, Client* p);
-	Account* CreateAccount(int n, Client* o, Client* p, double ir);
+	Account* CreatePartnerAccount(int n, Client* o, Client* p);
+	Account* CreatePartnerAccount(int n, Client* o, Client* p, double ir);
 
 	void AddInterest();
 };
